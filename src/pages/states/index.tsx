@@ -1,4 +1,12 @@
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
   TableCaption,
@@ -55,60 +63,77 @@ export function States() {
   }, []);
 
   return (
-    <section className="space-y-7">
-      <article className="flex flex-col items-center justify-center gap-3">
-        <h2 className="text-xl">1- Using states</h2>
-        <span>Counter: {counter}</span>
-        <Button onClick={handleClickButton}>{toggle ? "ON" : "OFF"}</Button>
-      </article>
-      <article className="flex flex-col items-center justify-center gap-3">
-        <h2 className="text-xl">2- Clock</h2>
-        <span> {clock}</span>
-      </article>
-      <article className="mx-auto my-0 flex max-w-[500px] flex-col items-center justify-center gap-3">
-        <h2 className="text-xl">3- To Do List</h2>
-        <div className="flex gap-8">
-          <form className="flex gap-2">
-            <Input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="New Task"
-            />
-            <Button onClick={(e) => handleCreateTask(e)} type="button">
-              Create task
-            </Button>
-          </form>
-          <form className="flex gap-2">
-            <Input
-              type="text"
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              placeholder="Filter tasks"
-            />
-          </form>
-        </div>
+    <section className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <Card>
+        <CardHeader>
+          <CardTitle>1- Using states</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <span>Counter: {counter}</span>
+        </CardContent>
+        <CardFooter>
+          <Button onClick={handleClickButton}>{toggle ? "ON" : "OFF"}</Button>
+        </CardFooter>
+      </Card>
 
-        <Table>
-          <TableCaption>A list of tasks</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead>ID</TableHead>
-              <TableHead>Task</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {tasks
-              .filter(({ task }) => task.includes(filter))
-              .map((task) => (
-                <TableRow key={task.id}>
-                  <TableCell>{task.id}</TableCell>
-                  <TableCell className="font-medium">{task.task}</TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </article>
+      <Card>
+        <CardHeader>
+          <CardTitle>2- Clock</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <span>{clock}</span>
+        </CardContent>
+      </Card>
+
+      <Card className="col-span-2">
+        <CardHeader>
+          <CardTitle>3- To Do List</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-8">
+            <form className="flex gap-2">
+              <Input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="New Task"
+              />
+              <Button onClick={(e) => handleCreateTask(e)} type="button">
+                Create task
+              </Button>
+            </form>
+            <form className="flex gap-2">
+              <Input
+                type="text"
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+                placeholder="Filter tasks"
+              />
+            </form>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Table>
+            <TableCaption>A list of tasks</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead>ID</TableHead>
+                <TableHead>Task</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {tasks
+                .filter(({ task }) => task.includes(filter))
+                .map((task) => (
+                  <TableRow key={task.id}>
+                    <TableCell>{task.id}</TableCell>
+                    <TableCell className="font-medium">{task.task}</TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </CardFooter>
+      </Card>
     </section>
   );
 }

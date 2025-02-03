@@ -1,4 +1,4 @@
-import { Home, Atom } from "lucide-react";
+import { Home, Atom, Rows3 } from "lucide-react";
 
 import {
   Sidebar,
@@ -21,6 +21,11 @@ const items = [
     title: "States",
     url: "/states",
     icon: Atom,
+  },
+  {
+    title: "Lists and conditionals",
+    url: "/lists-and-conditionals",
+    icon: Rows3,
   },
 ];
 
