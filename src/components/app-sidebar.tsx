@@ -6,10 +6,13 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "@/components/ui/sidebar";
+import { ModeToggle } from "./mode-toggle";
 
 const items = [
   {
@@ -32,6 +35,10 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader>
+        <ModeToggle />
+      </SidebarHeader>
+      <SidebarSeparator />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
